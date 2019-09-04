@@ -4,6 +4,7 @@ import duke.command.Command;
 import duke.exception.DukeException;
 import duke.exception.DukeIoException;
 import duke.gui.DialogBox;
+import duke.gui.Gui;
 import duke.storage.Storage;
 import duke.task.TaskList;
 import javafx.application.Application;
@@ -25,54 +26,48 @@ import javafx.stage.Stage;
  * Main Driver class housing the infinite loop.
  */
 public class Duke {
-    private final Image IMAGE_USER = new Image(this.getClass().getResourceAsStream("/images/DaUser.png"));
-    private final Image IMAGE_DUKE = new Image(this.getClass().getResourceAsStream("/images/DaDuke.png"));
-
     private Storage storage;
     private TaskList taskList;
-    private Ui ui;
-
-    // JavaFX
-    private ScrollPane scrollPane;
-    private VBox dialogContainer;
-    private TextField userInput;
-    private Button sendButton;
-    private Scene scene;
+    private Gui gui;
 
     public Duke(String filePath) {
-        this.ui = new Ui();
+        this.gui = new Gui();
         this.storage = new Storage(filePath);
         try {
             this.taskList = storage.readFromDisk(); // leave index 0 empty for clarity
         } catch (DukeIoException e) {
-            ui.showError(e);
+            // ui.showError(e);
             this.taskList = new TaskList(); // only load the taskList if no error
         }
     }
 
     // JavaFX GUI won't run without this.
-    public Duke() { }
+    public Duke() {
+        this("data/duke.txt");
+        //this.run();
+    }
 
     /**
      * The main loop for Duke.
      */
     public void run() {
-        ui.showWelcomeMessage();
-        boolean isExit = false;
-
-        while (!isExit) {
-            try {
-                String fullCommand = ui.readCommand();
-                ui.showLine(); // show the divider line
-                Command c = Parser.parse(fullCommand);
-                c.execute(taskList, ui, storage);
-                isExit = c.isExit();
-            } catch (DukeException e) {
-                ui.showError(e);
-            } finally {
-                ui.showLine();
-            }
-        }
+        //gui.showWelcomeMessage();
+//        ui.showWelcomeMessage();
+//        boolean isExit = false;
+//
+//        while (!isExit) {
+//            try {
+//                String fullCommand = ui.readCommand();
+//                ui.showLine(); // show the divider line
+//                Command c = Parser.parse(fullCommand);
+//                c.execute(taskList, ui, storage);
+//                isExit = c.isExit();
+//            } catch (DukeException e) {
+//                ui.showError(e);
+//            } finally {
+//                ui.showLine();
+//            }
+//        }
     }
 
 //    public static void main(String[] args) {

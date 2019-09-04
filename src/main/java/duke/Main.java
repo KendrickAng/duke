@@ -21,6 +21,7 @@ public class Main extends Application {
         try {
             // The FXMLLoader maps a control with fx:id defined in FXML to a variable with same name in controller.
             FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("/view/MainWindow.fxml"));
+            // The anchorpane is controlled by MainWindow.java (see MainWindow.fxml)
             AnchorPane ap = fxmlLoader.load();
             Scene scene = new Scene(ap);
             primaryStage.setScene(scene);

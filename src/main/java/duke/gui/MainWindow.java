@@ -24,13 +24,24 @@ public class MainWindow extends AnchorPane {
     private Button sendButton;
 
     private Duke duke;
+    private Gui gui;
 
     private Image userImage = new Image(this.getClass().getResourceAsStream("/images/DaUser.png"));
     private Image dukeImage = new Image(this.getClass().getResourceAsStream("/images/DaDuke.png"));
 
+    public MainWindow() {
+        this.gui = new Gui();
+    }
+
+    /**
+     * Initializes customised node properties.
+     */
     @FXML
     public void initialize() {
+        // The constructor is called, then the @FXML fields populated, then initialize() is called.
         scrollPane.vvalueProperty().bind(dialogContainer.heightProperty());
+        gui.setContainer(dialogContainer);
+        gui.showWelcomeMessage();
     }
 
     public void setDuke(Duke d) {
