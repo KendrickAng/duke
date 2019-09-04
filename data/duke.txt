@@ -1,4 +1,0 @@
-T | 0 | book courts
-T | 0 | book rooms
-T | 0 | book stadium
-T | 0 | control test

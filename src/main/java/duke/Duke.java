@@ -36,7 +36,7 @@ public class Duke {
         try {
             this.taskList = storage.readFromDisk(); // leave index 0 empty for clarity
         } catch (DukeIoException e) {
-            // ui.showError(e);
+            gui.showError(e);
             this.taskList = new TaskList(); // only load the taskList if no error
         }
     }
@@ -74,7 +74,20 @@ public class Duke {
 //        new Duke("data/duke.txt").run();
 //    }
 
-    public String getResponse(String input) {
-        return "Duke heard: " + input;
+//    public String getResponse(String input) {
+//        return "Duke heard: " + input;
+//    }
+
+    public Storage getStorage() {
+        return this.storage;
     }
+
+    public TaskList getTaskList() {
+        return this.taskList;
+    }
+
+    public Gui getGui() {
+        return this.gui;
+    }
+
 }
