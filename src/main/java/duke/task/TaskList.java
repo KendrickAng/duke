@@ -54,8 +54,6 @@ public class TaskList {
         return tasks.get(idx);
     }
 
-    // TODO: the user should be able to edit the returned list items via their printed index.
-
     /**
      * Finds all tasks matching a keyword given.
      *

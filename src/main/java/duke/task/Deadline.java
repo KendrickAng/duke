@@ -9,7 +9,7 @@ import duke.time.DateTime;
 public class Deadline extends Task {
     private String deadline;
 
-    public Deadline(String description, String deadline) throws DukeUnknownInputException {
+    Deadline(String description, String deadline) throws DukeUnknownInputException {
         this(description, deadline, false);
     }
 
